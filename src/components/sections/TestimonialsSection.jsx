@@ -1,14 +1,7 @@
+import { Headset, Rocket, RotateCcw, Ship, TicketPercent } from "lucide-react";
 
-import {
-  Ship,
-  Rocket,
-  Headset,
-  RotateCcw,
-  TicketPercent,
-} from "lucide-react";
-
-import TestimonialCard from "../cards/TestimonialCard";
 import ServiceItem from "../cards/ServiceItem";
+import TestimonialCard from "../cards/TestimonialCard";
 import SummerPromotion from "../promotions/SummerPromotion";
 
 const services = [
@@ -41,44 +34,37 @@ const services = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-10 sm:py-14">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-stretch gap-8
-          lg:grid-cols-3 lg:gap-6">
-
-          {/* Customer testimonial */}
-          <section className="rounded-xl border border-gray-200 p-6 sm:p-8">
-            <h2 className="mb-8 text-lg font-bold text-gray-900">
+    <section className="py-8 sm:py-10 lg:py-14">
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-stretch gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_2.05fr_minmax(0,1fr)] lg:gap-8">
+          <section className="flex min-w-0 flex-col">
+            <h2 className="mb-4 border-b border-border pb-3 text-base font-bold text-ink sm:mb-6 sm:text-lg">
               Testimonial
             </h2>
 
-            <TestimonialCard
-              image="https://i.postimg.cc/g27jxrvV/testimonial-1.jpg"
-              name="Alan Doe"
-              role="CEO & Founder, Invision"
-              testimonial="We put our trust in Anon and they delivered, making sure our needs were met."
-            />
-          </section>
-
-          {/* Summer collection promotion */}
-          <SummerPromotion />
-
-          {/* Customer services */}
-          <section className="rounded-xl border border-gray-200 p-6 sm:p-8">
-            <h2 className="mb-5 text-lg font-bold text-gray-900">
-              Our Services
-            </h2>
-
-            <div className="divide-y divide-gray-100">
-              {services.map((service) => (
-                <ServiceItem
-                  key={service.title}
-                  {...service}
-                />
-              ))}
+            <div className="flex flex-1 items-center justify-center rounded-xl border border-border px-4 py-6 sm:px-8 sm:py-8">
+              <TestimonialCard
+                image="https://i.postimg.cc/g27jxrvV/testimonial-1.jpg"
+                name="Alan Doe"
+                role="CEO & Founder Invision"
+                testimonial="We put our trust in Anon and they delivered, making sure our needs were met."
+              />
             </div>
           </section>
 
+          <SummerPromotion />
+
+          <section className="flex min-w-0 flex-col">
+            <h2 className="mb-4 border-b border-border pb-3 text-base font-bold text-ink sm:mb-6 sm:text-lg">
+              Our Services
+            </h2>
+
+            <div className="flex flex-1 flex-col justify-center gap-3 rounded-xl border border-border px-4 py-5 sm:gap-4 sm:px-8 sm:py-7">
+              {services.map((service) => (
+                <ServiceItem key={service.title} {...service} />
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </section>

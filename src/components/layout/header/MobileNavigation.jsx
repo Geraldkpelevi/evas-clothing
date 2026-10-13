@@ -1,12 +1,12 @@
-
+import { ChevronDown, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import {
-  ChevronDown,
- 
-  X,
-} from "lucide-react";
 // import SocialLinks from "../../ui/SocialLinks";
-import { FaFacebookF, FaInstagram, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { navigation, socialLinks } from "../../../data/navigation";
 
 const socialIcons = {
@@ -49,7 +49,7 @@ export default function MobileNavigation({ open, onClose }) {
           type="button"
           aria-label="Close navigation backdrop"
           onClick={onClose}
-          className="fixed inset-0 z-50 cursor-default bg-black/50 lg:hidden"
+          className="fixed inset-0 z-50 cursor-default bg-brand/50 lg:hidden"
         />
       )}
 
@@ -58,25 +58,25 @@ export default function MobileNavigation({ open, onClose }) {
         aria-label="Mobile navigation"
         aria-hidden={!open}
         inert={!open}
-        className={`fixed inset-y-0 left-0 z-[60] flex w-[min(320px,85vw)] flex-col overflow-y-auto bg-white shadow-2xl transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-y-0 left-0 z-[60] flex w-[min(320px,85vw)] flex-col overflow-y-auto bg-surface shadow-2xl transition-transform duration-300 lg:hidden ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-neutral-200 px-5 py-4">
-          <h2 className="text-lg font-bold">Menu</h2>
+        <div className="flex items-center justify-between border-b border-border px-5 py-4">
+          <h2 className="text-lg font-bold text-ink">Menu</h2>
 
           <button
             type="button"
             aria-label="Close menu"
             onClick={onClose}
-            className="rounded-full p-2 transition hover:bg-neutral-100"
+            className="rounded-full p-2 transition hover:bg-brand-light"
           >
             <X size={21} />
           </button>
         </div>
 
         <nav className="flex-1 px-5 py-3">
-          <ul className="divide-y divide-neutral-100">
+          <ul className="divide-y divide-border">
             {navigation.map((item) => {
               const children = item.megaMenu
                 ? item.megaMenu.map((group) => ({
@@ -95,7 +95,7 @@ export default function MobileNavigation({ open, onClose }) {
                         <a
                           href={item.href}
                           onClick={onClose}
-                          className="py-3 text-sm font-medium text-neutral-800"
+                          className="py-3 text-sm font-medium text-ink"
                         >
                           {item.label}
                         </a>
@@ -105,7 +105,7 @@ export default function MobileNavigation({ open, onClose }) {
                           aria-label={`${isExpanded ? "Collapse" : "Expand"} ${item.label}`}
                           aria-expanded={isExpanded}
                           onClick={() => toggleCategory(item.label)}
-                          className="rounded-md p-2 hover:bg-neutral-100"
+                          className="rounded-md p-2 hover:bg-brand-light"
                         >
                           <ChevronDown
                             size={17}
@@ -117,13 +117,13 @@ export default function MobileNavigation({ open, onClose }) {
                       </div>
 
                       {isExpanded && (
-                        <ul className="mb-2 ml-3 space-y-1 border-l border-neutral-200 pl-4">
+                        <ul className="mb-2 ml-3 space-y-1 border-l border-border pl-4">
                           {children.map((child) => (
                             <li key={child.href}>
                               <a
                                 href={child.href}
                                 onClick={onClose}
-                                className="block py-2 text-sm text-neutral-600 hover:text-black"
+                                className="block py-2 text-sm text-muted hover:text-brand"
                               >
                                 {child.label}
                               </a>
@@ -136,7 +136,7 @@ export default function MobileNavigation({ open, onClose }) {
                     <a
                       href={item.href}
                       onClick={onClose}
-                      className="block py-3 text-sm font-medium text-neutral-800 hover:text-neutral-500"
+                      className="block py-3 text-sm font-medium text-ink hover:text-brand"
                     >
                       {item.label}
                     </a>
@@ -146,16 +146,16 @@ export default function MobileNavigation({ open, onClose }) {
             })}
           </ul>
 
-          <div className="mt-6 border-t border-neutral-200 pt-5">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+          <div className="mt-6 border-t border-border pt-5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
               Preferences
             </p>
 
-            <label className="mb-3 flex items-center justify-between gap-3 text-sm">
+            <label className="mb-3 flex items-center justify-between gap-3 text-sm text-ink">
               Language
               <select
                 defaultValue="en-US"
-                className="max-w-32 rounded-md border border-neutral-200 bg-white p-2"
+                className="max-w-32 rounded-md border border-border bg-surface p-2"
               >
                 <option value="en-US">English</option>
                 <option value="es-ES">Español</option>
@@ -163,11 +163,11 @@ export default function MobileNavigation({ open, onClose }) {
               </select>
             </label>
 
-            <label className="flex items-center justify-between gap-3 text-sm">
+            <label className="flex items-center justify-between gap-3 text-sm text-ink">
               Currency
               <select
                 defaultValue="usd"
-                className="max-w-32 rounded-md border border-neutral-200 bg-white p-2"
+                className="max-w-32 rounded-md border border-border bg-surface p-2"
               >
                 <option value="usd">USD $</option>
                 <option value="eur">EUR €</option>
@@ -176,7 +176,7 @@ export default function MobileNavigation({ open, onClose }) {
           </div>
         </nav>
 
-        <div className="flex items-center gap-4 border-t border-neutral-200 px-5 py-5">
+        <div className="flex items-center gap-4 border-t border-border px-5 py-5">
           {socialLinks.map(({ label, href }) => {
             const Icon = socialIcons[label];
 
@@ -187,7 +187,7 @@ export default function MobileNavigation({ open, onClose }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="text-neutral-600 hover:text-black"
+                className="text-muted hover:text-brand"
               >
                 <Icon size={19} />
               </a>

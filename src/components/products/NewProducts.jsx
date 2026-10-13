@@ -1,8 +1,7 @@
-
-import { Heart, Eye, Repeat2, ShoppingBag } from "lucide-react";
+import { Eye, Heart, Repeat2, ShoppingBag } from "lucide-react";
+import { newProducts } from "../../data/products";
 import ProductPrice from "../ui/ProductPrice";
 import ProductRating from "../ui/ProductRating";
-import { newProducts } from "../../data/products";
 
 function ProductActions({ product, onAction }) {
   const actions = [
@@ -20,7 +19,7 @@ function ProductActions({ product, onAction }) {
           type="button"
           aria-label={`${label}: ${product.name}`}
           onClick={() => onAction?.(action, product)}
-          className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-700 shadow-sm transition-colors hover:bg-orange-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-surface text-muted shadow-sm transition-colors hover:bg-brand hover:text-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
         >
           <Icon size={17} aria-hidden="true" />
         </button>
@@ -31,13 +30,13 @@ function ProductActions({ product, onAction }) {
 
 function ProductCard({ product, onAction }) {
   const badgeClasses = {
-    black: "bg-gray-900 text-white",
-    pink: "bg-pink-100 text-pink-700",
+    black: "bg-brand text-surface",
+    pink: "bg-accent-light text-brand",
   };
 
   return (
-    <article className="group min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-white">
-      <div className="relative aspect-[4/5] overflow-hidden bg-gray-50">
+    <article className="group min-w-0 overflow-hidden rounded-card border border-border bg-surface">
+      <div className="relative aspect-[4/5] overflow-hidden bg-brand-light">
         <img
           src={product.image}
           alt={product.name}
@@ -57,9 +56,8 @@ function ProductCard({ product, onAction }) {
 
         {product.badge && (
           <span
-            className={`absolute left-3 top-3 rounded px-2 py-1 text-xs font-semibold ${
-              badgeClasses[product.badgeStyle] ??
-              "bg-orange-100 text-orange-700"
+            className={`absolute left-3 top-3 rounded px-2 py-1 text-[10px] font-semibold sm:text-xs ${
+              badgeClasses[product.badgeStyle] ?? "bg-accent-light text-brand"
             }`}
           >
             {product.badge}
@@ -69,12 +67,12 @@ function ProductCard({ product, onAction }) {
         <ProductActions product={product} onAction={onAction} />
       </div>
 
-      <div className="p-4">
-        <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+      <div className="p-3 sm:p-4">
+        <p className="text-[10px] font-medium uppercase tracking-wide text-muted sm:text-xs">
           {product.category}
         </p>
 
-        <h3 className="mt-2 line-clamp-2 min-h-10 text-sm font-medium text-gray-900">
+        <h3 className="mt-2 line-clamp-2 min-h-9 text-xs font-medium text-ink sm:min-h-10 sm:text-sm">
           {product.name}
         </h3>
 
@@ -85,7 +83,7 @@ function ProductCard({ product, onAction }) {
         <ProductPrice
           price={product.price}
           originalPrice={product.originalPrice}
-          className="mt-3 text-sm"
+          className="mt-3 text-xs sm:text-sm"
         />
       </div>
     </article>
@@ -94,21 +92,17 @@ function ProductCard({ product, onAction }) {
 
 export default function NewProducts({ onAction }) {
   return (
-    <section aria-labelledby="new-products-heading" className="mt-10">
+    <section aria-labelledby="new-products-heading" className="mt-8 sm:mt-10">
       <h2
         id="new-products-heading"
-        className="mb-5 text-xl font-semibold text-gray-900"
+        className="mb-4 text-lg font-semibold text-ink sm:mb-5 sm:text-xl"
       >
         New Products
       </h2>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
         {newProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAction={onAction}
-          />
+          <ProductCard key={product.id} product={product} onAction={onAction} />
         ))}
       </div>
     </section>

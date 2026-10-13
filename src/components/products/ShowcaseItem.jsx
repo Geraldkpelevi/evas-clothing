@@ -10,8 +10,8 @@ export default function ShowcaseItem({
     <article className="flex min-w-0 items-center gap-3">
       <a
         href={product.href ?? "#"}
-        className={`h-18.75 w-18.75 shrink-0 overflow-hidden rounded-md ${
-          showRating ? "h-20 w-20 bg-gray-100 p-2" : ""
+        className={`h-18.75 w-18.75 shrink-0 overflow-hidden rounded-store ${
+          showRating ? "h-20 w-20 bg-brand-light p-2" : ""
         }`}
         aria-label={`View ${product.name}`}
       >
@@ -28,7 +28,7 @@ export default function ShowcaseItem({
       <div className="min-w-0 flex-1">
         <a href={product.href ?? "#"} className="group">
           <h3
-            className={`line-clamp-2 font-medium text-gray-800 transition-colors group-hover:text-orange-500 ${
+            className={`line-clamp-2 font-medium text-ink transition-colors group-hover:text-brand ${
               showRating ? "text-base" : "text-sm"
             }`}
           >
@@ -39,7 +39,7 @@ export default function ShowcaseItem({
         {showCategory && product.category && (
           <a
             href={product.categoryHref ?? "#"}
-            className="mt-1 inline-block text-xs text-gray-500 hover:text-orange-500"
+            className="mt-1 inline-block text-xs text-muted hover:text-brand"
           >
             {product.category}
           </a>

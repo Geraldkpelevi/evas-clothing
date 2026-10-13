@@ -1,12 +1,14 @@
 export default function MegaMenu({ groups, className }) {
   return (
-    <div className={`invisible absolute left-1/2 top-full z-40 w-[min(1100px,95vw)] -translate-x-1/2 translate-y-2 rounded-b-xl border border-neutral-200 bg-white p-6 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${className || ''}`}>
+    <div
+      className={`invisible absolute left-1/2 top-full z-40 w-[min(1100px,95vw)] -translate-x-1/2 translate-y-2 rounded-b-xl border border-border bg-surface p-6 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${className || ""}`}
+    >
       <div className="grid grid-cols-4 gap-6">
         {groups.map((group) => (
           <div key={group.title}>
             <a
               href={group.href}
-              className="text-sm font-bold text-neutral-950 hover:underline"
+              className="text-sm font-bold text-ink hover:underline"
             >
               {group.title}
             </a>
@@ -16,7 +18,7 @@ export default function MegaMenu({ groups, className }) {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-sm text-neutral-600 transition hover:text-black"
+                    className="text-sm text-muted transition hover:text-brand"
                   >
                     {item.label}
                   </a>
@@ -26,13 +28,13 @@ export default function MegaMenu({ groups, className }) {
 
             <a
               href={group.href}
-              className="mt-4 block overflow-hidden rounded-md"
+              className="mt-4 block overflow-hidden rounded-store"
             >
               <img
                 src={group.image}
                 alt={`${group.title} collection`}
                 loading="lazy"
-                className="h-24 w-full rounded-md object-cover transition duration-300 hover:scale-105"
+                className="h-24 w-full rounded-store object-cover transition duration-300 hover:scale-105"
               />
             </a>
           </div>

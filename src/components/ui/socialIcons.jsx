@@ -1,9 +1,8 @@
-
 import {
   FaFacebookF,
   FaInstagram,
-  FaXTwitter,
   FaLinkedinIn,
+  FaXTwitter,
 } from "react-icons/fa6";
 
 import { socialLinks } from "../../../data/navigation";
@@ -28,7 +27,7 @@ export default function SocialLinks() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="text-neutral-600 transition-colors hover:text-black"
+            className="text-muted transition-colors hover:text-brand"
           >
             <Icon size={16} aria-hidden="true" />
           </a>

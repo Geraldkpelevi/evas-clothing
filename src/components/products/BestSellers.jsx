@@ -6,7 +6,7 @@ export default function BestSellers() {
     <section aria-labelledby="best-sellers-heading" className="mt-8 w-full">
       <h2
         id="best-sellers-heading"
-        className="mb-4 text-base font-semibold uppercase tracking-wider text-gray-700"
+        className="mb-4 text-base font-semibold uppercase tracking-wider text-ink"
       >
         Best Sellers
       </h2>

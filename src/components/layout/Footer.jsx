@@ -1,15 +1,10 @@
-
-import {
-  MapPin,
-  Phone,
-  Mail,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 import {
   FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
   FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
 } from "react-icons/fa";
 
 const brandCategories = [
@@ -78,23 +73,11 @@ const brandCategories = [
 const footerNavigation = [
   {
     title: "Popular Categories",
-    links: [
-      "Fashion",
-      "Electronic",
-      "Cosmetic",
-      "Health",
-      "Watches",
-    ],
+    links: ["Fashion", "Electronic", "Cosmetic", "Health", "Watches"],
   },
   {
     title: "Products",
-    links: [
-      "Fashion",
-      "Electronic",
-      "Cosmetic",
-      "Health",
-      "Watches",
-    ],
+    links: ["Fashion", "Electronic", "Cosmetic", "Health", "Watches"],
   },
   {
     title: "Our Company",
@@ -145,7 +128,7 @@ function FooterLink({ children, href = "#" }) {
   return (
     <a
       href={href}
-      className="text-sm text-gray-400 transition-colors duration-200 hover:text-orange-500"
+      className="text-xs text-muted transition-colors duration-200 hover:text-accent sm:text-sm "
     >
       {children}
     </a>
@@ -154,27 +137,25 @@ function FooterLink({ children, href = "#" }) {
 
 function BrandDirectory() {
   return (
-    <section className="border-b border-gray-700 bg-gray-900 px-4 py-10 sm:px-6 lg:px-8">
+    <section className="border-b border-white/10 bg-eerie-black px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-6 text-lg font-semibold text-white">
+        <h2 className="mb-5 text-base font-semibold text-salmon-pink sm:mb-6 sm:text-lg">
           Brand Directory
         </h2>
 
-        <div className="space-y-5">
+        <div className="space-y-4 sm:space-y-5">
           {brandCategories.map((category) => (
             <div
               key={category.title}
               className="flex flex-col gap-2 sm:flex-row sm:items-start"
             >
-              <h3 className="shrink-0 text-sm font-semibold text-gray-200">
+              <h3 className="shrink-0 text-xs font-semibold uppercase tracking-wide  text-gray-light sm:text-sm">
                 {category.title}:
               </h3>
 
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                 {category.links.map((link) => (
-                  <FooterLink key={link}>
-                    {link}
-                  </FooterLink>
+                  <FooterLink key={link}>{link}</FooterLink>
                 ))}
               </div>
             </div>
@@ -187,18 +168,19 @@ function BrandDirectory() {
 
 function FooterNavigation() {
   return (
-    <div className="bg-gray-950 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+    <div className="bg-brand px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
         {footerNavigation.map((section) => (
           <nav
             key={section.title}
             aria-label={section.title}
+            className="min-w-0"
           >
-            <h2 className="mb-5 border-b border-gray-700 pb-3 text-sm font-bold uppercase tracking-wider text-white">
+            <h2 className="mb-4 border-b border-white/10 pb-3 text-xs font-bold uppercase tracking-wider text-surface underline decoration-accent underline-offset-8  sm:text-sm">
               {section.title}
             </h2>
 
-            <ul className="space-y-3">
+            <ul className="space-y-2.5 sm:space-y-3">
               {section.links.map((link) => (
                 <li key={link}>
                   <FooterLink>{link}</FooterLink>
@@ -208,38 +190,37 @@ function FooterNavigation() {
           </nav>
         ))}
 
-        <section aria-labelledby="footer-contact">
+        <section aria-labelledby="footer-contact" className="min-w-0">
           <h2
             id="footer-contact"
-            className="mb-5 border-b border-gray-700 pb-3 text-sm font-bold uppercase tracking-wider text-white"
+            className="mb-4 border-b border-white/10 pb-3 text-xs font-bold uppercase tracking-wider text-surface sm:text-sm"
           >
             Contact
           </h2>
 
-          <ul className="space-y-4">
+          <ul className="space-y-3 sm:space-y-4">
             <li className="flex items-start gap-3">
               <MapPin
                 size={18}
-                className="mt-1 shrink-0 text-orange-500"
+                className="mt-1 shrink-0 text-accent"
                 aria-hidden="true"
               />
 
-              <address className="text-sm not-italic leading-6 text-gray-400">
-                419 State 414 Rte Beaver Dams,
-                New York (NY), 14812, USA
+              <address className="text-xs not-italic leading-6 text-gray-light sm:text-sm">
+                419 State 414 Rte Beaver Dams, New York (NY), 14812, USA
               </address>
             </li>
 
             <li className="flex items-center gap-3">
               <Phone
                 size={18}
-                className="shrink-0 text-orange-500"
+                className="shrink-0 text-accent"
                 aria-hidden="true"
               />
 
               <a
                 href="tel:+16079368058"
-                className="text-sm text-gray-400 transition-colors hover:text-orange-500"
+                className="text-xs text-gray-light transition-colors hover:text-accent sm:text-sm"
               >
                 (607) 936-8058
               </a>
@@ -248,13 +229,13 @@ function FooterNavigation() {
             <li className="flex items-center gap-3">
               <Mail
                 size={18}
-                className="shrink-0 text-orange-500"
+                className="shrink-0 text-accent"
                 aria-hidden="true"
               />
 
               <a
                 href="mailto:example@gmail.com"
-                className="break-all text-sm text-gray-400 transition-colors hover:text-orange-500"
+                className="break-all text-xs text-gray-light transition-colors hover:text-accent sm:text-sm"
               >
                 example@gmail.com
               </a>
@@ -262,10 +243,10 @@ function FooterNavigation() {
           </ul>
         </section>
 
-        <section aria-labelledby="footer-social">
+        <section aria-labelledby="footer-social" className="min-w-0">
           <h2
             id="footer-social"
-            className="mb-5 border-b border-gray-700 pb-3 text-sm font-bold uppercase tracking-wider text-white"
+            className="mb-4 border-b border-white/10 pb-3 text-xs font-bold uppercase tracking-wider text-surface sm:text-sm"
           >
             Follow Us
           </h2>
@@ -278,7 +259,7 @@ function FooterNavigation() {
                   aria-label={name}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-md bg-gray-800 text-gray-300 transition-colors hover:bg-orange-500 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-md bg-brand/80 text-gray-light transition-colors hover:bg-accent hover:text-brand sm:h-10 sm:w-10"
                 >
                   <Icon size={17} aria-hidden="true" />
                 </a>
@@ -293,7 +274,7 @@ function FooterNavigation() {
 
 function FooterBottom() {
   return (
-    <div className="border-t border-gray-700 bg-gray-950 px-4 py-6 sm:px-6 lg:px-8">
+    <div className="border-t border-white/10 bg-brand px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 sm:flex-row sm:justify-between">
         <img
           src="https://i.postimg.cc/43GKnVFF/payment.png"
@@ -302,11 +283,11 @@ function FooterBottom() {
           className="h-auto max-w-full object-contain"
         />
 
-        <p className="text-center text-sm text-gray-400">
+        <p className="text-center text-sm text-gray-light">
           Copyright © {new Date().getFullYear()}{" "}
           <a
             href="/"
-            className="font-semibold text-white transition-colors hover:text-orange-500"
+            className="font-semibold text-surface transition-colors hover:text-accent"
           >
             Anon
           </a>

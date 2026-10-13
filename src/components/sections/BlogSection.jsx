@@ -1,4 +1,3 @@
-
 import BlogCard from "../cards/BlogCard";
 
 const blogPosts = [
@@ -46,15 +45,12 @@ const blogPosts = [
 
 export default function BlogSection() {
   return (
-    <section
-      aria-labelledby="blog-heading"
-      className="py-10 sm:py-14"
-    >
+    <section aria-labelledby="blog-heading" className="py-10 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center justify-between">
           <h2
             id="blog-heading"
-            className="text-xl font-bold text-gray-900 sm:text-2xl"
+            className="text-xl font-bold text-ink sm:text-2xl"
           >
             Latest Blog Posts
           </h2>

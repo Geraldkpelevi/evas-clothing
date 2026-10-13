@@ -1,56 +1,52 @@
-
 import { useState } from "react";
+import { dealProducts } from "../../data/products";
 import ProductPrice from "../ui/ProductPrice";
 import ProductRating from "../ui/ProductRating";
-import { dealProducts } from "../../data/products";
 
 function DealCard({ product, onAddToCart }) {
   const soldPercentage = Math.min(
     100,
-    Math.max(
-      0,
-      (product.sold / (product.sold + product.available)) * 100
-    )
+    Math.max(0, (product.sold / (product.sold + product.available)) * 100),
   );
 
   return (
-    <article className="grid min-w-0 grid-cols-1 gap-5 rounded-xl border border-gray-200 p-4 sm:grid-cols-2 sm:p-5">
-      <div className="flex items-center justify-center overflow-hidden rounded-lg bg-gray-50">
+    <article className="grid min-w-0 grid-cols-1 gap-4 rounded-card border border-border p-4 sm:grid-cols-2 sm:gap-5 sm:p-5">
+      <div className="flex items-center justify-center overflow-hidden rounded-store bg-brand-light">
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="max-h-72 w-full object-contain"
+          className="max-h-60 w-full object-contain sm:max-h-72"
         />
       </div>
 
       <div className="flex min-w-0 flex-col items-start">
         <ProductRating rating={product.rating} />
 
-        <h3 className="mt-3 text-lg font-semibold text-gray-900">
+        <h3 className="mt-3 text-base font-semibold text-ink sm:text-lg">
           {product.name}
         </h3>
 
-        <p className="mt-2 text-sm leading-6 text-gray-600">
+        <p className="mt-2 text-sm leading-6 text-muted">
           {product.description}
         </p>
 
         <ProductPrice
           price={product.price}
           originalPrice={product.originalPrice}
-          className="mt-4 text-lg"
+          className="mt-4 text-base sm:text-lg"
         />
 
         <button
           type="button"
           onClick={() => onAddToCart?.(product)}
-          className="mt-4 rounded-md bg-gray-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-orange-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+          className="mt-4 w-full rounded-control bg-brand px-5 py-3 text-sm font-medium text-surface transition-colors hover:bg-onyx focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:w-auto"
         >
           Add to Cart
         </button>
 
         <div className="mt-5 w-full">
-          <div className="flex justify-between gap-3 text-xs text-gray-600">
+          <div className="flex justify-between gap-3 text-[11px] text-muted sm:text-xs">
             <span>
               Already Sold: <strong>{product.sold}</strong>
             </span>
@@ -60,7 +56,7 @@ function DealCard({ product, onAddToCart }) {
           </div>
 
           <div
-            className="mt-2 h-2 overflow-hidden rounded-full bg-gray-200"
+            className="mt-2 h-2 overflow-hidden rounded-full bg-brand-light"
             role="progressbar"
             aria-label="Units sold"
             aria-valuemin={0}
@@ -68,14 +64,14 @@ function DealCard({ product, onAddToCart }) {
             aria-valuenow={Math.round(soldPercentage)}
           >
             <div
-              className="h-full rounded-full bg-orange-500"
+              className="h-full rounded-full bg-accent"
               style={{ width: `${soldPercentage}%` }}
             />
           </div>
         </div>
 
         <div className="mt-5 w-full">
-          <p className="mb-3 text-sm font-medium text-gray-800">
+          <p className="mb-3 text-sm font-medium text-ink">
             Hurry up! Offer ends in:
           </p>
 
@@ -91,12 +87,12 @@ function DealCard({ product, onAddToCart }) {
               return (
                 <div
                   key={unit}
-                  className="rounded-md bg-gray-100 px-2 py-3 text-center"
+                  className="rounded-control bg-brand-light px-2 py-3 text-center"
                 >
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="text-base font-semibold text-ink sm:text-lg">
                     {String(value).padStart(2, "0")}
                   </p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-[10px] text-muted sm:text-xs">
                     {labels[unit]}
                   </p>
                 </div>
@@ -114,10 +110,7 @@ export default function DealOfTheDay({ onAddToCart }) {
 
   return (
     <section aria-labelledby="deal-heading" className="mt-10 min-w-0">
-      <h2
-        id="deal-heading"
-        className="mb-5 text-xl font-semibold text-gray-900"
-      >
+      <h2 id="deal-heading" className="mb-5 text-xl font-semibold text-ink">
         Deal of the Day
       </h2>
 

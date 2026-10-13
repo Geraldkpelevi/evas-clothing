@@ -13,7 +13,7 @@ export default function ProductSection({ children }) {
           aria-controls="product-sidebar"
           aria-expanded={isSidebarOpen}
           onClick={() => setIsSidebarOpen((open) => !open)}
-          className="mb-5 inline-flex items-center gap-2 rounded border border-gray-200 px-4 py-2 text-sm font-medium lg:hidden"
+          className="mb-5 inline-flex items-center gap-2 rounded-control border border-border bg-surface px-4 py-2 text-sm font-medium text-ink lg:hidden"
         >
           <SlidersHorizontal size={18} />
           Categories

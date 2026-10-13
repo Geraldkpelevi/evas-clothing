@@ -1,4 +1,3 @@
-
 const bannerSlides = [
   {
     id: 1,
@@ -33,9 +32,7 @@ function BannerSlide({ slide }) {
   const [whole, decimal] = slide.price.split(".");
 
   return (
-    <article
-      className="relative min-w-full snap-start overflow-hidden rounded-xl bg-gray-100"
-    >
+    <article className="relative min-w-full snap-start overflow-hidden rounded-card bg-brand-light">
       <img
         src={slide.image}
         alt={slide.alt}
@@ -43,26 +40,26 @@ function BannerSlide({ slide }) {
         fetchPriority={slide.id === 1 ? "high" : "auto"}
       />
 
-      <div className="absolute inset-0 flex items-center bg-black/10 px-5 sm:px-10 lg:px-16">
+      <div className="absolute inset-0 flex items-center bg-brand/10 px-5 sm:px-10 lg:px-16">
         <div className="max-w-md">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-orange-600 sm:text-sm">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent sm:text-sm">
             {slide.subtitle}
           </p>
 
-          <h2 className="mb-4 max-w-sm text-2xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mb-4 max-w-sm text-2xl font-bold leading-tight text-ink sm:text-4xl lg:text-5xl">
             {slide.title}
           </h2>
 
-          <p className="mb-5 text-base text-gray-700 sm:text-lg">
+          <p className="mb-5 text-base text-muted sm:text-lg">
             Starting at{" "}
-            <span className="font-semibold text-gray-900">
+            <span className="font-semibold text-ink">
               ${whole}.{decimal}
             </span>
           </p>
 
           <a
             href={slide.link}
-            className="inline-flex items-center justify-center rounded-md bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-control bg-brand px-6 py-3 text-sm font-semibold text-surface transition-colors hover:bg-onyx focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
             Shop Now
           </a>

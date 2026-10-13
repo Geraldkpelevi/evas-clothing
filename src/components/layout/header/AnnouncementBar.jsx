@@ -15,8 +15,8 @@ const socialIcons = {
 
 export default function AnnouncementBar() {
   return (
-    <div className="border-b border-neutral-200 bg-neutral-50">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-4 py-2 text-xs sm:px-6 lg:flex-nowrap lg:justify-between lg:px-8">
+    <div className="border-b border-border bg-brand-light">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-3 py-2 text-[11px] sm:flex-row sm:gap-3 sm:px-6 sm:text-xs lg:flex-nowrap lg:justify-between lg:px-8">
         <div className="hidden items-center gap-3 lg:flex">
           {socialLinks.map(({ label, href }) => {
             const Icon = socialIcons[label];
@@ -28,7 +28,7 @@ export default function AnnouncementBar() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="text-neutral-600 transition hover:text-black"
+                className="text-muted transition hover:text-brand"
               >
                 <Icon size={15} />
               </a>
@@ -36,10 +36,8 @@ export default function AnnouncementBar() {
           })}
         </div>
 
-        <p className="text-center text-neutral-700">
-          <strong className="font-semibold text-red-600">
-            Free Shipping
-          </strong>{" "}
+        <p className="text-center leading-relaxed text-muted">
+          <strong className="font-semibold text-sale">Free Shipping</strong>{" "}
           This week on orders over $35
         </p>
 

@@ -3,39 +3,72 @@
 @import "tailwindcss";
 
 /* =========================================
-   1. DESIGN TOKENS
-   Change global design values here.
+   1. DESIGN SYSTEM — TAILWIND CSS 4
+   Define reusable design values once.
    ========================================= */
 
 @theme {
-  /* Brand colors */
+  /* Brand */
   --color-brand: #171717;
   --color-brand-light: #f5f5f5;
 
-  /* Accent colors */
+  /* Accent */
   --color-accent: #ffb6bf;
   --color-accent-light: #fff0f2;
 
-  /* Neutral colors */
+  /* Text */
   --color-ink: #1f1f1f;
   --color-muted: #737373;
-  --color-border: #e5e5e5;
+
+  /* Surfaces and borders */
   --color-surface: #ffffff;
+  --color-border: #e5e5e5;
+
+  /* Additional storefront colors from the original CSS */
+  --color-gray-light: hsl(0 0% 93%);
+  --color-gray-medium: hsl(0 0% 60%);
+  --color-gray-dark: hsl(0 0% 47%);
+  --color-gray-deep: hsl(0 0% 33%);
+  --color-onyx: hsl(0 0% 27%);
+  --color-eerie-black: hsl(0 0% 13%);
+
+  --color-salmon-pink: hsl(353 100% 78%);
+  --color-sale: hsl(0 100% 70%);
+  --color-rating: hsl(29 90% 65%);
+  --color-success: hsl(152 51% 52%);
 
   /* Typography */
   --font-sans: "Poppins", sans-serif;
 
-  /* Reusable border radii */
+  /* Custom font sizes */
+  --text-shop-1: 1.563rem;
+  --text-shop-2: 1.375rem;
+  --text-shop-3: 1.25rem;
+  --text-shop-4: 1.125rem;
+  --text-shop-5: 1rem;
+  --text-shop-6: 0.938rem;
+  --text-shop-7: 0.875rem;
+  --text-shop-8: 0.813rem;
+  --text-shop-9: 0.75rem;
+  --text-shop-10: 0.688rem;
+  --text-shop-11: 0.625rem;
+
+  /* Border radius */
   --radius-card: 0.75rem;
   --radius-control: 0.375rem;
+  --radius-store: 0.625rem;
+  --radius-store-sm: 0.3125rem;
 
-  /* Newsletter animation */
+  /* Shared animation timing */
+  --ease-store: cubic-bezier(0.4, 0, 0.2, 1);
   --animate-newsletter-scale-in:
     newsletter-scale-in 180ms ease-out both;
 }
 
 /* =========================================
    2. GLOBAL BASE STYLES
+   Tailwind Preflight already handles most
+   browser resets. Only add what is needed.
    ========================================= */
 
 :root {
@@ -49,15 +82,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 html {
   min-width: 320px;
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
 body {
@@ -69,7 +97,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Form elements inherit the global typography. */
+/* Shared typography for form controls */
 button,
 input,
 textarea,
@@ -77,7 +105,7 @@ select {
   font: inherit;
 }
 
-/* Interactive elements */
+/* Interactive defaults */
 button {
   cursor: pointer;
 }
@@ -86,7 +114,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Responsive media defaults */
+/* Consistent media sizing */
 img,
 picture,
 video {
@@ -107,7 +135,64 @@ video {
 }
 
 /* =========================================
-   3. GLOBAL ANIMATIONS
+   3. REUSABLE CUSTOM UTILITIES
+   Use these only when they improve readability
+   beyond standard Tailwind utilities.
+   ========================================= */
+
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 15px;
+
+  @media (width >= 768px) {
+    max-width: 750px;
+  }
+
+  @media (width >= 1024px) {
+    max-width: 980px;
+  }
+
+  @media (width >= 1280px) {
+    max-width: 1200px;
+  }
+}
+
+/* Shared horizontal scrolling behavior */
+@utility horizontal-scroll {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &:hover {
+    scrollbar-color: var(--color-border) transparent;
+  }
+}
+
+/* Shared card surface */
+@utility store-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+/* Shared interactive transition */
+@utility store-transition {
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    box-shadow,
+    opacity,
+    transform;
+  transition-duration: 200ms;
+  transition-timing-function: var(--ease-store);
+}
+
+/* =========================================
+   4. GLOBAL ANIMATIONS
    ========================================= */
 
 @keyframes newsletter-scale-in {

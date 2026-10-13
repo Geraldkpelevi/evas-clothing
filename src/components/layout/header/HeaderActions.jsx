@@ -1,9 +1,4 @@
-
-import {
-  Heart,
-  ShoppingBag,
-  UserRound,
-} from "lucide-react";
+import { Heart, ShoppingBag, UserRound } from "lucide-react";
 
 const actions = [
   {
@@ -27,20 +22,18 @@ const actions = [
 
 export default function HeaderActions() {
   return (
-    <div className="flex items-center gap-3 sm:gap-5">
+    <div className="order-2 flex items-center gap-3 sm:order-3 sm:gap-5">
       {actions.map(({ label, href, icon: Icon, count }) => (
         <a
           key={label}
           href={href}
-          aria-label={
-            count !== undefined ? `${label}, ${count} items` : label
-          }
-          className="relative inline-flex size-10 items-center justify-center text-neutral-800 transition hover:text-neutral-500"
+          aria-label={count !== undefined ? `${label}, ${count} items` : label}
+          className="relative inline-flex size-10 items-center justify-center text-ink transition hover:text-brand"
         >
           <Icon size={23} strokeWidth={1.7} />
 
           {count !== undefined && (
-            <span className="absolute right-0 top-0 flex size-4 items-center justify-center rounded-full bg-black text-[10px] font-semibold text-white">
+            <span className="absolute right-0 top-0 flex size-4 items-center justify-center rounded-full bg-brand text-shop-11 font-semibold text-surface">
               {count}
             </span>
           )}

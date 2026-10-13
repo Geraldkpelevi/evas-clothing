@@ -1,11 +1,4 @@
-
-import {
-  Grid2X2,
-  Heart,
-  Home,
-  Menu,
-  ShoppingBag,
-} from "lucide-react";
+import { Grid2X2, Heart, Home, Menu, ShoppingBag } from "lucide-react";
 
 const items = [
   { label: "Menu", icon: Menu, action: "menu" },
@@ -19,7 +12,7 @@ export default function MobileBottomNavigation({ onMenuOpen }) {
   return (
     <nav
       aria-label="Mobile quick navigation"
-      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-neutral-200 bg-white pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_15px_rgba(0,0,0,0.05)] lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-border bg-surface pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_15px_rgba(0,0,0,0.05)] lg:hidden"
     >
       {items.map(({ label, icon: Icon, href, count, action }) => {
         const content = (
@@ -28,13 +21,13 @@ export default function MobileBottomNavigation({ onMenuOpen }) {
               <Icon size={22} strokeWidth={1.7} />
 
               {count !== undefined && (
-                <span className="absolute -right-2 -top-2 flex size-4 items-center justify-center rounded-full bg-black text-[10px] text-white">
+                <span className="absolute -right-2 -top-2 flex size-4 items-center justify-center rounded-full bg-brand text-[10px] text-surface">
                   {count}
                 </span>
               )}
             </span>
 
-            <span className="text-[10px] font-medium">{label}</span>
+            <span className="text-[10px] font-medium text-muted">{label}</span>
           </>
         );
 
@@ -44,7 +37,7 @@ export default function MobileBottomNavigation({ onMenuOpen }) {
             type="button"
             onClick={onMenuOpen}
             aria-label="Open navigation menu"
-            className="flex min-h-14 flex-col items-center justify-center gap-1 text-neutral-700 transition hover:bg-neutral-50"
+            className="flex min-h-14 flex-col items-center justify-center gap-1 text-muted transition hover:bg-brand-light"
           >
             {content}
           </button>
@@ -53,7 +46,7 @@ export default function MobileBottomNavigation({ onMenuOpen }) {
             key={label}
             href={href}
             aria-label={label}
-            className="flex min-h-14 flex-col items-center justify-center gap-1 text-neutral-700 transition hover:bg-neutral-50"
+            className="flex min-h-14 flex-col items-center justify-center gap-1 text-muted transition hover:bg-brand-light"
           >
             {content}
           </a>

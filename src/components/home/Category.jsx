@@ -1,5 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
-
+import { useCallback, useEffect, useRef } from "react";
 
 const categories = [
   {
@@ -62,8 +61,8 @@ const categories = [
 
 function CategoryCard({ category }) {
   return (
-    <article className="flex min-w-62 items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-shadow duration-200 hover:shadow-md sm:min-w-0">
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-orange-50 p-2">
+    <article className="flex min-w-62 items-center gap-4 rounded-card border border-border bg-surface p-4 transition-shadow duration-200 hover:shadow-md sm:min-w-0">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-store bg-accent-light p-2">
         <img
           src={category.image}
           alt={category.alt}
@@ -76,16 +75,14 @@ function CategoryCard({ category }) {
 
       <div className="min-w-0 flex-1">
         <div className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <h3 className="text-sm font-semibold text-gray-800">
-            {category.title}
-          </h3>
+          <h3 className="text-sm font-semibold text-ink">{category.title}</h3>
 
-          <span className="text-xs text-gray-500">({category.amount})</span>
+          <span className="text-xs text-muted">({category.amount})</span>
         </div>
 
         <a
           href={`/category/${category.id}`}
-          className="inline-block text-xs font-medium text-orange-600 transition-colors hover:text-orange-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+          className="inline-block text-xs font-medium text-brand transition-colors hover:text-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
         >
           Show All
         </a>
@@ -93,10 +90,6 @@ function CategoryCard({ category }) {
     </article>
   );
 }
-
-
-
-
 
 export default function Category() {
   const viewportRef = useRef(null);
@@ -118,8 +111,7 @@ export default function Category() {
   const updatePosition = useCallback(() => {
     if (!trackRef.current) return;
 
-    trackRef.current.style.transform =
-      `translate3d(${-offsetRef.current}px, 0, 0)`;
+    trackRef.current.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
   }, []);
 
   // Measure one complete set of categories.
@@ -154,18 +146,14 @@ export default function Category() {
       }
 
       // Prevent a large jump after the browser tab becomes inactive.
-      const delta = Math.min(
-        (time - lastTimeRef.current) / 1000,
-        0.05
-      );
+      const delta = Math.min((time - lastTimeRef.current) / 1000, 0.05);
 
       lastTimeRef.current = time;
 
       const width = groupWidthRef.current;
 
       if (!draggingRef.current && width > 0) {
-        offsetRef.current =
-          (offsetRef.current + SPEED * delta) % width;
+        offsetRef.current = (offsetRef.current + SPEED * delta) % width;
 
         updatePosition();
       }
@@ -206,8 +194,7 @@ export default function Category() {
     const distance = startXRef.current - event.clientX;
 
     offsetRef.current =
-      ((startOffsetRef.current + distance) % width + width) %
-      width;
+      (((startOffsetRef.current + distance) % width) + width) % width;
 
     updatePosition();
   };
@@ -242,14 +229,11 @@ export default function Category() {
             }}
           >
             {/* Original category group */}
-            <div
-              ref={firstGroupRef}
-              className="flex w-max shrink-0 gap-4 pr-4"
-            >
+            <div ref={firstGroupRef} className="flex w-max shrink-0 gap-4 pr-4">
               {categories.map((category) => (
                 <div
                   key={category.id}
-                  className="w-[calc(100vw-2rem)] shrink-0 sm:w-[calc((100vw-3rem)/2)] lg:w-[calc((min(100vw-4rem,80rem)-2rem)/3)]"
+                  className="min-w-0 shrink-0 basis-[85vw] sm:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.333%-0.75rem)]"
                 >
                   <CategoryCard category={category} />
                 </div>
@@ -265,7 +249,7 @@ export default function Category() {
               {categories.map((category) => (
                 <div
                   key={`duplicate-${category.id}`}
-                  className="w-[calc(100vw-2rem)] shrink-0 sm:w-[calc((100vw-3rem)/2)] lg:w-[calc((min(100vw-4rem,80rem)-2rem)/3)]"
+                  className="min-w-0 shrink-0 basis-[85vw] sm:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.333%-0.75rem)]"
                 >
                   <CategoryCard category={category} />
                 </div>
@@ -277,5 +261,3 @@ export default function Category() {
     </section>
   );
 }
-
-
